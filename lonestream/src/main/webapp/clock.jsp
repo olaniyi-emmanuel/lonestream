@@ -8,6 +8,8 @@
 </head>
 <body>
 <h1>Welcome to Lone Time </h1>
+<%@ include file="hello.jsp" %>
+
 The <%=new Date() %>
 
 </body>
