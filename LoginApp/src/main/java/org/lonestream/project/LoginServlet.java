@@ -12,6 +12,7 @@ import org.lonestream.dto.User;
 /**
  * Servlet implementation class LoginServlet
  */
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,13 +25,14 @@ public class LoginServlet extends HttpServlet {
 		password = request.getParameter("password");
 		
 		
-		LoginSerivce loginService = new LoginService();
-		boolean result = loginService.autheenticate(userId, password);
+		LoginService loginService = new LoginService();
+		boolean result = loginService.authenticate(userId, password);
 		
 		if(result) { 
-			User user = loginService.getUserDetails(userId);
-			request.getSession().setAttribute("user", user);
+			//User user = loginService.getUserdetails(userId);
+			//request.getSession().setAttribute("user", user);
 			response.sendRedirect("success.jsp");
+			return;
 		}
 		else {
 			response.sendRedirect("login.jsp");
